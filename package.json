@@ -1,0 +1,15 @@
+{
+  "name": "akame-scrapers",
+  "version": "1.0.0",
+  "description": "Scrapers simples y sin API externa para bots de WhatsApp (Baileys). Un archivo, sin keys, sin registro.",
+  "main": "scrapers/wiki.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node test/todos.mjs"
+  },
+  "keywords": ["scraper", "baileys", "whatsapp", "bot", "sin-api", "akame"],
+  "author": "Gus (Gus-1337)",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "dependencies": {}
+}
