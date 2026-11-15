@@ -1,20 +1,18 @@
 /**
  * .serie <nombre> — ficha de una serie (TVMaze).
- *
- * Sin API key, sin registro, sin límite práctico. Cero dependencias.
- *
- * Uso:  .serie breaking bad
- *       .serie the last of us
- *
- * Autor: AKAME-SCRAPERS · Licencia MIT
+ * Autor: Gus · Licencia MIT
+ * Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
  */
 
 const API = 'https://api.tvmaze.com/search/shows';
 
-const caja = (titulo, lineas, pie = 'AKAME-SCRAPERS') =>
+const CANAL = 'https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q';
+
+const caja = (titulo, lineas, pie = 'Gus') =>
     '╭┈──◯◝ ⬢ *' + titulo + '*\n' +
     lineas.filter(Boolean).map((l) => (l.startsWith('>') ? l : '┆ ❀ ' + l)).join('\n') + '\n' +
-    '╰┈──◯◞ ✿ ' + pie;
+    '╰┈──◯◞ ✿ ' + pie + '\n' +
+    '> 🌸 Sigue el canal › ' + CANAL;
 
 const pedir = async (url) => {
     const res = await fetch(url, {

@@ -1,14 +1,7 @@
 /**
  * .traducir [idioma] <texto> — traduce texto (o una respuesta) sin API key.
- *
- * Sin API key: MyMemory (la memoria de traducción de Translated.net) es libre
- * para uso normal. Cero dependencias.
- *
- * Uso:  .traducir hola mundo           (detecta el idioma → español)
- *       .traducir en hola mundo        (español → inglés)
- *       (respondiendo a un mensaje) .traducir en
- *
- * Autor: AKAME-SCRAPERS · Licencia MIT
+ * Autor: Gus · Licencia MIT
+ * Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
  */
 
 const API = 'https://api.mymemory.translated.net/get';
@@ -19,10 +12,13 @@ const IDIOMAS = {
     tr: 'turco', id: 'indonesio', ko: 'coreano'
 };
 
-const caja = (titulo, lineas, pie = 'AKAME-SCRAPERS') =>
+const CANAL = 'https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q';
+
+const caja = (titulo, lineas, pie = 'Gus') =>
     '╭┈──◯◝ ⬢ *' + titulo + '*\n' +
     lineas.filter(Boolean).map((l) => (l.startsWith('>') ? l : '┆ ❀ ' + l)).join('\n') + '\n' +
-    '╰┈──◯◞ ✿ ' + pie;
+    '╰┈──◯◞ ✿ ' + pie + '\n' +
+    '> 🌸 Sigue el canal › ' + CANAL;
 
 const pedir = async (url) => {
     const res = await fetch(url, {

@@ -1,30 +1,24 @@
 /**
  * .noticias [fuente] — últimos títulos de un diario (RSS).
- *
- * Sin API key: se lee el RSS del medio y se parsea con regex, sin cheerio ni
- * nada extra. Cero dependencias.
- *
- * Uso:  .noticias            (BBC Mundo)
- *       .noticias clarin
- *       .noticias infobae
- *       .noticias fuentes     (lista de fuentes)
- *
- * Autor: AKAME-SCRAPERS · Licencia MIT
+ * Autor: Gus · Licencia MIT
+ * Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
  */
 
 const FUENTES = {
     bbc: { nombre: 'BBC Mundo', url: 'https://feeds.bbci.co.uk/mundo/rss.xml' },
+    elpais: { nombre: 'El País', url: 'https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada' },
     clarin: { nombre: 'Clarín', url: 'https://www.clarin.com/rss/lo-ultimo/' },
-    infobae: { nombre: 'Infobae', url: 'https://www.infobae.com/feeds/rss/' },
     nacion: { nombre: 'La Nación', url: 'https://www.lanacion.com.ar/arc/outboundfeeds/rss/' },
-    peru21: { nombre: 'Perú21', url: 'https://peru21.pe/arc/outboundfeeds/rss/' },
-    elcomercio: { nombre: 'El Comercio', url: 'https://elcomercio.pe/arc/outboundfeeds/rss/' }
+    infobae: { nombre: 'Infobae', url: 'https://www.infobae.com/arc/outboundfeeds/rss/' }
 };
 
-const caja = (titulo, lineas, pie = 'AKAME-SCRAPERS') =>
+const CANAL = 'https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q';
+
+const caja = (titulo, lineas, pie = 'Gus') =>
     '╭┈──◯◝ ⬢ *' + titulo + '*\n' +
     lineas.filter(Boolean).map((l) => (l.startsWith('>') ? l : '┆ ❀ ' + l)).join('\n') + '\n' +
-    '╰┈──◯◞ ✿ ' + pie;
+    '╰┈──◯◞ ✿ ' + pie + '\n' +
+    '> 🌸 Sigue el canal › ' + CANAL;
 
 const pedirTexto = async (url) => {
     const res = await fetch(url, {

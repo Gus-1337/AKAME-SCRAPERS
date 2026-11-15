@@ -7,9 +7,26 @@
   "scripts": {
     "test": "node test/todos.mjs"
   },
-  "keywords": ["scraper", "baileys", "whatsapp", "bot", "sin-api", "akame"],
-  "author": "Gus (Gus-1337)",
+  "keywords": [
+    "scraper",
+    "baileys",
+    "whatsapp",
+    "bot",
+    "sin-api",
+    "akame"
+  ],
+  "author": "Gus",
   "license": "MIT",
-  "engines": { "node": ">=18" },
-  "dependencies": {}
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {},
+  "homepage": "https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gus-1337/AKAME-SCRAPERS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gus-1337/AKAME-SCRAPERS/issues"
+  }
 }

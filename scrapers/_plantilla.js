@@ -1,20 +1,16 @@
 /**
  * _plantilla.js — molde para un scraper nuevo.
- *
- * Copiá este archivo, cambiale el nombre y completá `run()`.
- * Reglas de la casa:
- *   1. Cero dependencias (fetch nativo de Node 18+).
- *   2. Sin API key ni registro: si pide key, no va.
- *   3. Un `try/catch` que devuelva un mensaje claro, nunca una excepción.
- *   4. Agregalo a test/todos.mjs para que quede probado.
- *
- * Autor: AKAME-SCRAPERS · Licencia MIT
+ * Autor: Gus · Licencia MIT
+ * Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
  */
 
-const caja = (titulo, lineas, pie = 'AKAME-SCRAPERS') =>
+const CANAL = 'https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q';
+
+const caja = (titulo, lineas, pie = 'Gus') =>
     '╭┈──◯◝ ⬢ *' + titulo + '*\n' +
     lineas.filter(Boolean).map((l) => (l.startsWith('>') ? l : '┆ ❀ ' + l)).join('\n') + '\n' +
-    '╰┈──◯◞ ✿ ' + pie;
+    '╰┈──◯◞ ✿ ' + pie + '\n' +
+    '> 🌸 Sigue el canal › ' + CANAL;
 
 const pedir = async (url) => {
     const res = await fetch(url, {

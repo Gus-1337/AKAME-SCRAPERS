@@ -1,22 +1,19 @@
 /**
  * .wiki <término> — resumen de Wikipedia en español.
- *
- * Sin API key, sin registro, sin límites raros: usa la API pública de
- * es.wikipedia.org. Cero dependencias (fetch nativo de Node 18+).
- *
- * Uso:  .wiki imperio inca
- *       .wiki python    (busca y trae el primer resultado)
- *
- * Autor: AKAME-SCRAPERS · Licencia MIT
+ * Autor: Gus · Licencia MIT
+ * Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
  */
 
 const BUSCAR = 'https://es.wikipedia.org/w/api.php';
 const RESUMEN = 'https://es.wikipedia.org/api/rest_v1/page/summary/';
 
-const caja = (titulo, lineas, pie = 'AKAME-SCRAPERS') =>
+const CANAL = 'https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q';
+
+const caja = (titulo, lineas, pie = 'Gus') =>
     '╭┈──◯◝ ⬢ *' + titulo + '*\n' +
     lineas.filter(Boolean).map((l) => (l.startsWith('>') ? l : '┆ ❀ ' + l)).join('\n') + '\n' +
-    '╰┈──◯◞ ✿ ' + pie;
+    '╰┈──◯◞ ✿ ' + pie + '\n' +
+    '> 🌸 Sigue el canal › ' + CANAL;
 
 const pedir = async (url) => {
     const res = await fetch(url, {

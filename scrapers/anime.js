@@ -1,13 +1,7 @@
 /**
  * .anime <nombre> — ficha de un anime (AniList).
- *
- * Sin API key: AniList es GraphQL público y no pide registro (90 pedidos por
- * minuto). Cero dependencias.
- *
- * Uso:  .anime one piece
- *       .anime frieren
- *
- * Autor: AKAME-SCRAPERS · Licencia MIT
+ * Autor: Gus · Licencia MIT
+ * Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
  */
 
 const API = 'https://graphql.anilist.co';
@@ -29,10 +23,13 @@ const CONSULTA = `query ($s: String) {
   }
 }`;
 
-const caja = (titulo, lineas, pie = 'AKAME-SCRAPERS') =>
+const CANAL = 'https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q';
+
+const caja = (titulo, lineas, pie = 'Gus') =>
     '╭┈──◯◝ ⬢ *' + titulo + '*\n' +
     lineas.filter(Boolean).map((l) => (l.startsWith('>') ? l : '┆ ❀ ' + l)).join('\n') + '\n' +
-    '╰┈──◯◞ ✿ ' + pie;
+    '╰┈──◯◞ ✿ ' + pie + '\n' +
+    '> 🌸 Sigue el canal › ' + CANAL;
 
 const consultar = async (busqueda) => {
     const res = await fetch(API, {
@@ -99,7 +96,7 @@ module.exports = {
                 a.title?.native && a.title.native !== titulo ? '_' + a.title.native + '_' : '',
                 '',
                 a.averageScore ? '⭐ Puntaje › ' + a.averageScore + '/100' : '⭐ Puntaje › sin votos',
-                '❤️ Popularidad › ' + (a.popularity || 0).toLocaleString('es-PE'),
+                '❤️ Popularidad › ' + (a.popularity || 0).toLocaleString('es-419'),
                 '📺 Episodios › ' + (a.episodes || '—') + ' · ' + (ESTADO[a.status] || a.status || '—'),
                 '🎬 Formato › ' + (a.format || '—') + (a.seasonYear ? ' · ' + a.seasonYear : ''),
                 '🏷️ Géneros › ' + ((a.genres || []).join(', ') || '—'),

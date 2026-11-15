@@ -1,22 +1,19 @@
 /**
  * .clima <ciudad> — clima de hoy y pronóstico de 3 días.
- *
- * Sin API key: Open-Meteo es gratis para uso no comercial y no pide registro.
- * Cero dependencias (fetch nativo de Node 18+).
- *
- * Uso:  .clima Iquitos
- *       .clima Lima
- *
- * Autor: AKAME-SCRAPERS · Licencia MIT
+ * Autor: Gus · Licencia MIT
+ * Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
  */
 
 const GEO = 'https://geocoding-api.open-meteo.com/v1/search';
 const CLIMA = 'https://api.open-meteo.com/v1/forecast';
 
-const caja = (titulo, lineas, pie = 'AKAME-SCRAPERS') =>
+const CANAL = 'https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q';
+
+const caja = (titulo, lineas, pie = 'Gus') =>
     '╭┈──◯◝ ⬢ *' + titulo + '*\n' +
     lineas.filter(Boolean).map((l) => (l.startsWith('>') ? l : '┆ ❀ ' + l)).join('\n') + '\n' +
-    '╰┈──◯◞ ✿ ' + pie;
+    '╰┈──◯◞ ✿ ' + pie + '\n' +
+    '> 🌸 Sigue el canal › ' + CANAL;
 
 const pedir = async (url) => {
     const res = await fetch(url, {
@@ -63,7 +60,7 @@ module.exports = {
         if (!ciudad) {
             return responder(caja('CLIMA', [
                 `*Uso* › ${p}clima <ciudad>`,
-                `*Ejemplo* › ${p}clima Iquitos`,
+                `*Ejemplo* › ${p}clima Buenos Aires`,
                 '> Datos de Open-Meteo, sin API key ♡'
             ]));
         }
@@ -72,7 +69,7 @@ module.exports = {
             const geo = await pedir(GEO + '?name=' + encodeURIComponent(ciudad) + '&count=1&language=es&format=json');
             const lugar = geo?.results?.[0];
             if (!lugar) {
-                return responder(caja('NO ENCONTRÉ ESA CIUDAD', [ 'Probá con › *' + ciudad + ', Perú*' ]));
+                return responder(caja('NO ENCONTRÉ ESA CIUDAD', [ 'Probá con el nombre completo › *' + ciudad + '* ♡' ]));
             }
 
             const q =

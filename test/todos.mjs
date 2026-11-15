@@ -16,8 +16,8 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
 const PRUEBAS = [
-    ['wiki', ['Machu Picchu']],
-    ['clima', ['Iquitos']],
+    ['wiki', ['Python']],
+    ['clima', ['Buenos Aires']],
     ['cripto', ['btc']],
     ['cambio', ['100', 'usd', 'pen']],
     ['anime', ['one piece']],

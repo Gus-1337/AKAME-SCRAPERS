@@ -1,22 +1,18 @@
 /**
  * .cambio <monto> <de> <a> — conversión de divisas al día.
- *
- * Sin API key: open.er-api.com actualiza una vez por día y no pide registro.
- * Cero dependencias.
- *
- * Uso:  .cambio 100 usd pen
- *       .cambio 50 eur ars
- *       .cambio        (lista de monedas populares contra el dólar)
- *
- * Autor: AKAME-SCRAPERS · Licencia MIT
+ * Autor: Gus · Licencia MIT
+ * Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
  */
 
 const API = 'https://open.er-api.com/v6/latest/';
 
-const caja = (titulo, lineas, pie = 'AKAME-SCRAPERS') =>
+const CANAL = 'https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q';
+
+const caja = (titulo, lineas, pie = 'Gus') =>
     '╭┈──◯◝ ⬢ *' + titulo + '*\n' +
     lineas.filter(Boolean).map((l) => (l.startsWith('>') ? l : '┆ ❀ ' + l)).join('\n') + '\n' +
-    '╰┈──◯◞ ✿ ' + pie;
+    '╰┈──◯◞ ✿ ' + pie + '\n' +
+    '> 🌸 Sigue el canal › ' + CANAL;
 
 const pedir = async (url) => {
     const res = await fetch(url, {
@@ -32,7 +28,7 @@ const pedir = async (url) => {
 
 const POPULARES = ['PEN', 'ARS', 'MXN', 'COP', 'CLP', 'BRL', 'BOB', 'EUR'];
 
-const numero = (n) => n.toLocaleString('es-PE', { maximumFractionDigits: 2 });
+const numero = (n) => n.toLocaleString('es-419', { maximumFractionDigits: 2 });
 
 module.exports = {
     command: ['cambio', 'divisa', 'dolar', 'conversor'],

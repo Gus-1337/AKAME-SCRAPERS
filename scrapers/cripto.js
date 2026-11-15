@@ -1,23 +1,19 @@
 /**
  * .cripto <moneda> — precio y variación de criptomonedas.
- *
- * Sin API key: CoinGecko tiene endpoint público (con límite de ~30 pedidos por
- * minuto, de sobra para un bot). Cero dependencias.
- *
- * Uso:  .cripto btc
- *       .cripto ethereum
- *       .cripto          (top 10 por capitalización)
- *
- * Autor: AKAME-SCRAPERS · Licencia MIT
+ * Autor: Gus · Licencia MIT
+ * Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
  */
 
 const MERCADOS = 'https://api.coingecko.com/api/v3/coins/markets';
 const BUSCAR = 'https://api.coingecko.com/api/v3/search';
 
-const caja = (titulo, lineas, pie = 'AKAME-SCRAPERS') =>
+const CANAL = 'https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q';
+
+const caja = (titulo, lineas, pie = 'Gus') =>
     '╭┈──◯◝ ⬢ *' + titulo + '*\n' +
     lineas.filter(Boolean).map((l) => (l.startsWith('>') ? l : '┆ ❀ ' + l)).join('\n') + '\n' +
-    '╰┈──◯◞ ✿ ' + pie;
+    '╰┈──◯◞ ✿ ' + pie + '\n' +
+    '> 🌸 Sigue el canal › ' + CANAL;
 
 const pedir = async (url) => {
     const res = await fetch(url, {
@@ -68,7 +64,7 @@ module.exports = {
                 const lineas = top.map((c, i) =>
                     (i + 1) + '. *' + c.symbol.toUpperCase() + '* › ' + precio(c.current_price) + ' · ' + flecha(c.price_change_percentage_24h)
                 );
-                return responder(caja('TOP 10 CRIPTO', lineas, 'Fuente: CoinGecko ♡'));
+                return responder(caja('TOP 10 CRIPTO', [...lineas, '', '> Fuente › CoinGecko ♡']));
             }
 
             // buscar el id real (btc → bitcoin)

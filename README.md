@@ -1,5 +1,7 @@
 # 🕷️ AKAME-SCRAPERS
 
+### 🌸 Seguí el canal: [AKAME-MD en WhatsApp](https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q)
+
 **Scrapers listos para bots de WhatsApp (Baileys). Sin API key. Sin registro. Sin servicios externos que después te cobren.**
 
 Cada archivo de `scrapers/` es **uno solo**, autocontenido, sin dependencias (`fetch` nativo de Node 18+). Lo copiás a tu bot y anda.
@@ -22,7 +24,7 @@ node test/todos.mjs
 | `.anime <nombre>` | Ficha de anime | AniList | ❌ |
 | `.serie <nombre>` | Ficha de series | TVMaze | ❌ |
 | `.letra <artista> - <tema>` | Letra de canción | lyrics.ovh | ❌ |
-| `.noticias [fuente]` | Titulares por RSS | BBC, Clarín, Infobae, La Nación, Perú21, El Comercio | ❌ |
+| `.noticias [fuente]` | Titulares por RSS | BBC Mundo, El País, Clarín, La Nación, Infobae | ❌ |
 | `.traducir [idioma] <texto>` | Traducción | MyMemory | ❌ |
 
 **Sin `npm install`. Sin `process.env`. Sin cuenta en ningún lado.**
@@ -45,7 +47,6 @@ tu-bot/
 
 ```js
 const wiki = require('./commands/wiki');
-// o si tu cargador escanea la carpeta, ya está: exporta { command, run }
 ```
 
 **Bot en ESM / TypeScript**:
@@ -71,22 +72,26 @@ Renombralo y listo (`client`, `m`, `text`, etc.). Nada más que adaptar.
 ## 👀 Cómo se ve
 
 ```
-╭┈──◯◝ ⬢ *CLIMA · IQUITOS*
-┆ ❀ *Iquitos, Departamento de Loreto, Perú*
-┆ ❀ 🌤️ *33°C* — Mayormente despejado
-┆ ❀ 🌡️ Sensación › 42°C
-┆ ❀ 💧 Humedad › 58%
-┆ ❀ 🌦️ *Dom 15* › 34° / 25° · 💧55%
-╰┈──◯◞ ✿ AKAME-SCRAPERS
+╭┈──◯◝ ⬢ *CLIMA · BUENOS AIRES*
+┆ ❀ *Buenos Aires, Argentina*
+┆ ❀ ☀️ *25°C* — Despejado
+┆ ❀ 🌡️ Sensación › 27°C
+┆ ❀ 💧 Humedad › 60%
+┆ ❀ ☁️ *Dom 15* › 25° / 18° · 💧10%
+> Fuente: Open-Meteo ♡
+╰┈──◯◞ ✿ Gus
+> 🌸 Sigue el canal › https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
 ```
 
 ```
 ╭┈──◯◝ ⬢ *CRIPTO · BTC*
 ┆ ❀ *Bitcoin*
-┆ ❀ 💵 *$64,647*
-┆ ❀ 📈 24h › 🔴 -1.01%
-┆ ❀ 🏦 Cap. › $1.30T
-╰┈──◯◞ ✿ AKAME-SCRAPERS
+┆ ❀ 💵 *$64,726*
+┆ ❀ 📈 24h › 🔴 -0.71%
+┆ ❀ 🏦 Cap. › $1.29T
+> Fuente: CoinGecko ♡
+╰┈──◯◞ ✿ Gus
+> 🌸 Sigue el canal › https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q
 ```
 
 ---
@@ -101,7 +106,7 @@ Salida:
 
 ```
 ✔ wiki        290ms  ╭┈──◯◝ ⬢ *WIKIPEDIA* …
-✔ clima       711ms  ╭┈──◯◝ ⬢ *CLIMA · IQUITOS* …
+✔ clima       711ms  ╭┈──◯◝ ⬢ *CLIMA · BUENOS AIRES* …
 …
 RESULTADO · 9/9 andando
 ```
@@ -141,8 +146,10 @@ Después: agregalo a `test/todos.mjs` para que quede verificado siempre. Más de
 
 ---
 
-## 📄 Licencia
+## 📄 Licencia y créditos
 
-MIT — hacé lo que quieras, solo mantené el crédito y no lo vendas como si fuera tuyo.
+MIT © **Gus** — usalo, modificalo, compartilo; solo mantené el crédito y no lo vendas como si fuera tuyo.
+Ver [LICENSE](LICENSE).
 
-Hecho con cariño para la comunidad de bots de WhatsApp · **AKAME** ♡
+Hecho por **Gus** para la comunidad de bots de WhatsApp.
+🌸 Canal: [AKAME-MD](https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q)

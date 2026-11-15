@@ -1,5 +1,7 @@
 # Cómo agregar un scraper
 
+🌸 Canal: https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q · por Gus
+
 ## 1. Elegí una fuente que no pida nada
 
 Antes de escribir código, comprobá que se pueda:
