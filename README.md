@@ -7,7 +7,7 @@
 Cada archivo de `scrapers/` es **uno solo**, autocontenido, sin dependencias (`fetch` nativo de Node 18+). Lo copiás a tu bot y anda.
 
 ```bash
-# probá los 9 contra internet, ahora mismo
+# probá los 12 contra internet, ahora mismo
 node test/todos.mjs
 ```
 
@@ -26,8 +26,20 @@ node test/todos.mjs
 | `.letra <artista> - <tema>` | Letra de canción | lyrics.ovh | ❌ |
 | `.noticias [fuente]` | Titulares por RSS | BBC Mundo, El País, Clarín, La Nación, Infobae | ❌ |
 | `.traducir [idioma] <texto>` | Traducción | MyMemory | ❌ |
+| `.play <link o nombre>` | Busca y manda el audio con la ficha | YouTube | ❌ |
+| `.ytmp3 <link o nombre>` | Sólo el audio (m4a) | YouTube | ❌ |
+| `.ytmp4 <link o nombre>` | Video mp4 360p con audio | YouTube | ❌ |
 
 **Sin `npm install`. Sin `process.env`. Sin cuenta en ningún lado.**
+
+### ⚠️ Los tres de YouTube (`.play`, `.ytmp3`, `.ytmp4`)
+
+Bajan directo de YouTube, sin pasar por servicios de terceros. Dos cosas que tenés que saber:
+
+1. **YouTube decide por IP.** Si tu servidor es un VPS/datacenter, YouTube puede contestar "iniciá sesión para confirmar que no sos un bot" y el comando devuelve ese aviso. Desde una conexión normal (tu casa, un host con IP limpia) anda. No es magia: es la política anti-bot de ellos.
+2. **El `.ytmp4` sale en 360p** porque es la única calidad que YouTube entrega con video y audio en el mismo archivo. Las demás vienen separadas y unirlas necesita `ffmpeg` — este repo no lleva dependencias.
+
+Si querés respaldo para cuando YouTube bloquee, se le puede enganchar tu propia API en tres líneas: hay un solo `if` en `resolver()`.
 
 ---
 
@@ -108,8 +120,10 @@ Salida:
 ✔ wiki        290ms  ╭┈──◯◝ ⬢ *WIKIPEDIA* …
 ✔ clima       711ms  ╭┈──◯◝ ⬢ *CLIMA · BUENOS AIRES* …
 …
-RESULTADO · 9/9 andando
+RESULTADO · 12/12 andando
 ```
+
+Los tres de YouTube corren en modo test (resuelven el video y eligen el formato, sin bajar el archivo) para no gastar datos en cada corrida.
 
 El script usa un **contexto falso** (no necesita WhatsApp) y falla con código 1 si alguno se rompió → se puede correr en un cron y avisar al canal cuando algo muere.
 

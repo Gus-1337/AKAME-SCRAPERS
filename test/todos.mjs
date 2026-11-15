@@ -15,6 +15,12 @@ import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 
+// Los tres de YouTube bajan el archivo sólo si no está en modo test: así la
+// prueba no se lleva 10 MB de datos cada vez. Igual resuelven el video, eligen
+// el formato y dicen si YouTube dejó descargarlo desde esta IP.
+process.env.AKAME_TEST = '1';
+const VIDEO_PRUEBA = 'https://youtu.be/dQw4w9WgXcQ';
+
 const PRUEBAS = [
     ['wiki', ['Python']],
     ['clima', ['Buenos Aires']],
@@ -24,7 +30,10 @@ const PRUEBAS = [
     ['serie', ['breaking bad']],
     ['letra', ['coldplay', '-', 'yellow']],
     ['noticias', []],
-    ['traducir', ['en', 'hola mundo']]
+    ['traducir', ['en', 'hola mundo']],
+    ['play', [VIDEO_PRUEBA]],
+    ['ytmp3', [VIDEO_PRUEBA]],
+    ['ytmp4', [VIDEO_PRUEBA]]
 ];
 
 /** Contexto falso: junta lo que el scraper manda por WhatsApp. */
