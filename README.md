@@ -2,7 +2,7 @@
 
 ### 🌸 Seguí el canal: [AKAME-MD en WhatsApp](https://whatsapp.com/channel/0029VbDPchgEAKWO4mMYtC1Q)
 
-**Scrapers listos para bots de WhatsApp (Baileys). Sin API key. Sin registro. Sin servicios externos que después te cobren.**
+**Scrapers listos para bots de WhatsApp (Baileys). Sin API key. Sin registro. Sin cuentas.**
 
 Cada archivo de `scrapers/` es **uno solo**, autocontenido, sin dependencias (`fetch` nativo de Node 18+). Lo copiás a tu bot y anda.
 
@@ -34,12 +34,19 @@ node test/todos.mjs
 
 ### ⚠️ Los tres de YouTube (`.play`, `.ytmp3`, `.ytmp4`)
 
-Bajan directo de YouTube, sin pasar por servicios de terceros. Dos cosas que tenés que saber:
+Primero intentan **directo contra YouTube** (rápido, sin intermediarios). Si YouTube contesta "iniciá sesión para confirmar que no sos un bot" —le pasa a casi todos los VPS—, el scraper **solo** pasa a respaldos públicos sin key:
 
-1. **YouTube decide por IP.** Si tu servidor es un VPS/datacenter, YouTube puede contestar "iniciá sesión para confirmar que no sos un bot" y el comando devuelve ese aviso. Desde una conexión normal (tu casa, un host con IP limpia) anda. No es magia: es la política anti-bot de ellos.
-2. **El `.ytmp4` sale en 360p** porque es la única calidad que YouTube entrega con video y audio en el mismo archivo. Las demás vienen separadas y unirlas necesita `ffmpeg` — este repo no lleva dependencias.
+| | respaldos (en orden) |
+|---|---|
+| Audio (`.play`, `.ytmp3`) | abztech → ryuzei → delirius |
+| Video (`.ytmp4`) | davidcyril → eliteprotech |
 
-Si querés respaldo para cuando YouTube bloquee, se le puede enganchar tu propia API en tres líneas: hay un solo `if` en `resolver()`.
+Ninguno pide registro ni key: se usan hasta que mueran, y cuando uno muere el test lo delata. Por eso hay más de uno.
+
+Dos detalles más:
+
+1. **El `.ytmp4` sale en 360p**, que es la única calidad que viene con video y audio en el mismo archivo. Las demás vienen separadas y unirlas necesita `ffmpeg` — este repo no lleva dependencias.
+2. **El audio sale en mp3** cuando viene de los respaldos, y en m4a cuando sale directo de YouTube (mismo sonido, distinto envase).
 
 ---
 
@@ -123,7 +130,7 @@ Salida:
 RESULTADO · 12/12 andando
 ```
 
-Los tres de YouTube corren en modo test (resuelven el video y eligen el formato, sin bajar el archivo) para no gastar datos en cada corrida.
+Los tres de YouTube corren en modo test: bajan el archivo y lo verifican igual, pero no lo envían (así la corrida no se lleva ~10 MB por mensaje).
 
 El script usa un **contexto falso** (no necesita WhatsApp) y falla con código 1 si alguno se rompió → se puede correr en un cron y avisar al canal cuando algo muere.
 
